@@ -9,11 +9,11 @@ var outer = function(){
 //Above you're given a function that returns another function which has a closure over the name variable.
 //Invoke outer saving the return value into another variable called 'inner'.
 
-  //Code Here
+var inner = outer();
 
 //Once you do that, invoke inner.
 
-  //Code Here
+inner();
 
 
 
@@ -34,7 +34,9 @@ var callFriend = function(){
 
   //Code Here
 
+var calling = callFriend();
 
+calling("801-360-2403")
 
 //Next Problem
 
@@ -44,7 +46,15 @@ var callFriend = function(){
   Write a function called makeCounter that makes the following code work properly.
 */
 
-  //Code Here
+var makeCounter = function(){
+  var count = 0;
+  return function(){
+    count++;
+    return count
+  }
+}
+
+
   var count = makeCounter();
   count() // 1
   count() // 2
@@ -63,6 +73,26 @@ var callFriend = function(){
   Once completed, add a second arguments that allows the function to be invoked N number of times.
   After the function has been called N number of times, console.log('STAHHP');
 */
+
+var function1 = function(fn, n){
+  var i = 1;
+    return function(){
+      if (i >= n){
+        return console.log("STAHHP");
+    } else {
+        i++;
+        return fn();
+      }
+    }
+  }
+  
+var newFn = function1(function(){
+  console.log("keep going!")
+}, 3);
+
+newFn()
+
+
 
 
 
